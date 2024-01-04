@@ -2,9 +2,10 @@ pub mod l125_is_palindrome;
 pub mod l13_roman_to_int;
 pub mod l14_longest_common_prefix;
 pub mod l1_two_sum;
+pub mod l20_is_valid;
 
 fn main() {
-    let lesson = 1;
+    let lesson = 20;
     match lesson {
         1 => {
             let data = vec![1, 2, 3, 4, 5];
@@ -36,6 +37,13 @@ fn main() {
                 "{}",
                 l14_longest_common_prefix::Solution::longest_common_prefix(strs)
             );
+        }
+        20 => {
+            let wrong_str = String::from("){");
+            let correct_str = String::from("[{()}]");
+
+            println!("Wrong: {}", l20_is_valid::Solution::is_valid(wrong_str));
+            println!("Correct: {}", l20_is_valid::Solution::is_valid(correct_str));
         }
         125 => {
             println!(
