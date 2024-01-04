@@ -10,10 +10,10 @@ impl Solution {
         let mut ongoing_brackets: Vec<char> = vec![];
         let openings: Vec<char> = vec!['(', '[', '{'];
         let closings: Vec<char> = vec![')', ']', '}'];
-        let mut availableCombinations: HashMap<char, char> = HashMap::new();
-        availableCombinations.insert(')', '(');
-        availableCombinations.insert(']', '[');
-        availableCombinations.insert('}', '{');
+        let mut available_combinations: HashMap<char, char> = HashMap::new();
+        available_combinations.insert(')', '(');
+        available_combinations.insert(']', '[');
+        available_combinations.insert('}', '{');
 
         for s_char in s.chars() {
             if openings.contains(&s_char) {
@@ -21,16 +21,17 @@ impl Solution {
             }
 
             if closings.contains(&s_char) {
-                if ongoing_brackets.len() == 0 {
+                if ongoing_brackets.is_empty() {
                     return false;
                 }
 
-                if ongoing_brackets.pop().unwrap() != *availableCombinations.get(&s_char).unwrap() {
+                if ongoing_brackets.pop().unwrap() != *available_combinations.get(&s_char).unwrap()
+                {
                     return false;
                 }
             }
         }
 
-        return ongoing_brackets.len() == 0;
+        ongoing_brackets.is_empty()
     }
 }
