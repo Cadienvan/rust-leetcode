@@ -1,8 +1,11 @@
+use l21_merge_two_sorted_lists::ListNode;
+
 pub mod l125_is_palindrome;
 pub mod l13_roman_to_int;
 pub mod l14_longest_common_prefix;
 pub mod l1_two_sum;
 pub mod l20_is_valid;
+pub mod l21_merge_two_sorted_lists;
 
 fn main() {
     let lesson = 20;
@@ -44,6 +47,26 @@ fn main() {
 
             println!("Wrong: {}", l20_is_valid::Solution::is_valid(wrong_str));
             println!("Correct: {}", l20_is_valid::Solution::is_valid(correct_str));
+        }
+        21 => {
+            let list1_item2: ListNode = ListNode { val: 2, next: None };
+            let list1_item1: ListNode = ListNode {
+                val: 1,
+                next: Some(Box::new(list1_item2)),
+            };
+            let list2_item2: ListNode = ListNode { val: 5, next: None };
+            let list2_item1: ListNode = ListNode {
+                val: 0,
+                next: Some(Box::new(list2_item2)),
+            };
+
+            println!(
+                "List1: {:?}",
+                l21_merge_two_sorted_lists::Solution::merge_two_lists(
+                    Some(Box::new(list1_item1)),
+                    Some(Box::new(list2_item1))
+                )
+            );
         }
         125 => {
             println!(
