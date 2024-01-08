@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 pub struct Solution;
 
@@ -28,13 +28,36 @@ impl Solution {
         return nums.len() as i32;
     }
 
-    pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
+    pub fn remove_duplicates_with_map(nums: &mut Vec<i32>) -> i32 {
         let nums_clone = nums.clone();
         let mut idxs_to_remove = vec![];
         let mut first_idxs = HashMap::new();
         for (idx, num) in nums_clone.iter().enumerate() {
             if !first_idxs.contains_key(num) {
                 first_idxs.insert(num, idx);
+            } else {
+                println!("Should remove {}", idx);
+                idxs_to_remove.push(idx);
+            }
+        }
+
+        // reverse idxs_to_remove
+        for idx in idxs_to_remove.iter().rev() {
+            nums.remove(*idx);
+        }
+
+        println!("{:?}", nums);
+
+        return nums.len() as i32;
+    }
+
+    pub fn remove_duplicates(nums: &mut Vec<i32>) -> i32 {
+        let nums_clone = nums.clone();
+        let mut idxs_to_remove = vec![];
+        let mut first_idxs = HashSet::new();
+        for (idx, num) in nums_clone.iter().enumerate() {
+            if !first_idxs.contains(num) {
+                first_idxs.insert(num);
             } else {
                 println!("Should remove {}", idx);
                 idxs_to_remove.push(idx);
