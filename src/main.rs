@@ -6,9 +6,10 @@ pub mod l14_longest_common_prefix;
 pub mod l1_two_sum;
 pub mod l20_is_valid;
 pub mod l21_merge_two_sorted_lists;
+pub mod l26_remove_duplicates;
 
 fn main() {
-    let lesson = 20;
+    let lesson = 26;
     match lesson {
         1 => {
             let data = vec![1, 2, 3, 4, 5];
@@ -66,6 +67,14 @@ fn main() {
                     Some(Box::new(list1_item1)),
                     Some(Box::new(list2_item1))
                 )
+            );
+        }
+        26 => {
+            let mut nums = vec![0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+
+            println!(
+                "Result is: {}",
+                l26_remove_duplicates::Solution::remove_duplicates(&mut nums)
             );
         }
         125 => {

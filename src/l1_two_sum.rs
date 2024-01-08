@@ -8,8 +8,8 @@ impl Solution {
         let mut data = HashMap::new();
         for (num_index, &num) in nums.iter().enumerate() {
             let idx = num_index.try_into().unwrap();
-            if let Some(eventuallyFoundOption) = data.get(&num) {
-                return vec![*eventuallyFoundOption, idx];
+            if let Some(eventually_found_option) = data.get(&num) {
+                return vec![*eventually_found_option, idx];
             }
             data.insert(target - num, idx);
         }
